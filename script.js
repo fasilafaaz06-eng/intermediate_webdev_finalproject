@@ -1,17 +1,23 @@
-const calculate = () => {
-  let p = document.getElementById("principle").value;
-  let r = document.getElementById("rate").value;
-  let t = document.getElementById("time").value;
-  let simpleInterest = (p * r * t) / 100;
-  let amount = p - simpleInterest;
 
-  let result = document.getElementById("result");
-  script.js:3 Uncaught TypeError: Cannot read properties of null (reading 'value')
-    at calculate (script.js:3:47)
-    at HTMLButtonElement.onclick ((index):31:58)
+function calculateSum() {
+    const input1 = document.getElementById('value1');
+    const input2 = document.getElementById('value2');
 
+    // 1. Prevent TypeError by checking if elements exist
+    if (!input1 || !input2) {
+        console.error("Input elements not found!");
+        return;
+    }
 
-  result.innerHTML = `<div>Principal Amount: <span>${p.toFixed(2)}</span></div>
-  <div>Total Interest: <span>${simpleInterest.toFixed(2)}</span></div>
-  <div>Total Amount: <span>${amount.toFixed(2)}</span></div>`;
-};
+    // 2. Properly convert string inputs to Numbers
+    const val1 = Number(input1.value);
+    const val2 = Number(input2.value);
+
+    // 3. Optional: Validate that the result is actually a number (not NaN)
+    if (isNaN(val1) || isNaN(val2)) {
+        alert("Please enter valid numbers");
+        return;
+    }
+
+    console.log("Total:", val1 + val2);
+}
